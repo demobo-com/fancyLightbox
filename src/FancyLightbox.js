@@ -8,9 +8,11 @@ define(function(require, exports, module) {
     var TransitionableTransform = require('famous/transitions/TransitionableTransform');
     var Lightbox = require('famous/views/Lightbox');
     var Easing = require('famous/transitions/Easing');
-    var FamousCubicBezier = require('FamousCubicBezier');
-    var CubicBezier = new FamousCubicBezier( [0.25,0.1,0.25,1] );
-    var cssEase = 'easeInOut';
+
+    var cubicBezier = require('CubicBezier');
+    var duration = 200; // duration of animation in milliseconds.
+    var epsilon = (1000 / 60 / duration) / 4;
+    var cssEase = cubicBezier( 0.25,0.1,0.25,1, epsilon );
 
     function FancyLightbox(options) {
         Lightbox.apply(this, arguments);
@@ -181,6 +183,7 @@ define(function(require, exports, module) {
             showOpacity: 1,
             overlap: true
         };
+
         this.pageTransitions[3] = {
             inOrigin: [0.5,0.5],
             inTransform: Transform.translate(0,this.options.size[1],1),
@@ -246,6 +249,7 @@ define(function(require, exports, module) {
             showOpacity: 1,
             overlap: true
         };
+
         this.pageTransitions[7] = {
             inOrigin: [0.5,0.5],
             inTransform: Transform.translate(0,this.options.size[1],1),
@@ -311,6 +315,7 @@ define(function(require, exports, module) {
             showOpacity: 1,
             overlap: true
         };
+
         this.pageTransitions[11] = {
             inOrigin: [0.5,0.5],
             inTransform: Transform.translate(0,this.options.size[1],1),
@@ -376,6 +381,7 @@ define(function(require, exports, module) {
             showOpacity: 1,
             overlap: true
         };
+
         this.pageTransitions[15] = {
             inOrigin: [0.5,0.5],
             inTransform: Transform.translate(0,this.options.size[1],0),
@@ -441,6 +447,7 @@ define(function(require, exports, module) {
             showOpacity: 1,
             overlap: true
         };
+
         this.pageTransitions[19] = {
             inOrigin: [0.5,0.5],
             inTransform: Transform.translate(0,this.options.size[1],1),
@@ -495,7 +502,6 @@ define(function(require, exports, module) {
             showOpacity: 1,
             overlap: true
         };
-
         this.pageTransitions[22] = {
             inOrigin: [0.5,0.5],
             inTransform: [
@@ -538,7 +544,6 @@ define(function(require, exports, module) {
             showOpacity: 1,
             overlap: true
         };
-
         this.pageTransitions[24] = {
             inOrigin: [0.5,0.5],
             inTransform: [
@@ -580,7 +585,6 @@ define(function(require, exports, module) {
             showOpacity: 1,
             overlap: true
         };
-
         this.pageTransitions[26] = {
             inOrigin: [0.5,0.5],
             inTransform: [
@@ -602,7 +606,7 @@ define(function(require, exports, module) {
             overlap: true
         };
 
-        this.pageTransitions[27] = {
+        this.pageTransitions[27] = this.pageTransitions[28] = {
             inOrigin: [0.5,0.5],
             inTransform: [
                 Transform.scale(0.7, 0.7),
@@ -625,7 +629,7 @@ define(function(require, exports, module) {
             overlap: true
         };
 
-        this.pageTransitions[28] = {
+        this.pageTransitions[29] = {
             inOrigin: [0.5,0.5],
             inTransform: [
                 Transform.translate(this.options.size[0],0,1),
@@ -651,7 +655,7 @@ define(function(require, exports, module) {
             showOpacity: 1,
             overlap: true
         };
-        this.pageTransitions[29] = {
+        this.pageTransitions[30] = {
             inOrigin: [0.5,0.5],
             inTransform: [
                 Transform.translate(-this.options.size[0],0,1),
@@ -677,7 +681,8 @@ define(function(require, exports, module) {
             showOpacity: 1,
             overlap: true
         };
-        this.pageTransitions[30] = {
+
+        this.pageTransitions[31] = {
             inOrigin: [0.5,0.5],
             inTransform: [
                 Transform.translate(0,-this.options.size[1],1),
@@ -703,7 +708,7 @@ define(function(require, exports, module) {
             showOpacity: 1,
             overlap: true
         };
-        this.pageTransitions[31] = {
+        this.pageTransitions[32] = {
             inOrigin: [0.5,0.5],
             inTransform: [
                 Transform.translate(0,this.options.size[1],1),
@@ -730,7 +735,7 @@ define(function(require, exports, module) {
             overlap: true
         };
 
-        this.pageTransitions[32] = {
+        this.pageTransitions[33] = {
             inOrigin: [0.5,0.5],
             inTransform: [
                 Transform.thenMove(Transform.rotateY(-90*deg), [0,0,-1000]),
@@ -754,7 +759,7 @@ define(function(require, exports, module) {
             showOpacity: 1,
             overlap: true
         };
-        this.pageTransitions[33] = {
+        this.pageTransitions[34] = {
             inOrigin: [0.5,0.5],
             inTransform: [
                 Transform.thenMove(Transform.rotateY(90*deg), [0,0,-1000]),
@@ -778,7 +783,8 @@ define(function(require, exports, module) {
             showOpacity: 1,
             overlap: true
         };
-        this.pageTransitions[34] = {
+
+        this.pageTransitions[35] = {
             inOrigin: [0.5,0.5],
             inTransform: [
                 Transform.thenMove(Transform.rotateX(90*deg), [0,0,-1000]),
@@ -802,7 +808,7 @@ define(function(require, exports, module) {
             showOpacity: 1,
             overlap: true
         };
-        this.pageTransitions[35] = {
+        this.pageTransitions[36] = {
             inOrigin: [0.5,0.5],
             inTransform: [
                 Transform.thenMove(Transform.rotateX(-90*deg), [0,0,-1000]),
@@ -827,7 +833,7 @@ define(function(require, exports, module) {
             overlap: true
         };
 
-        this.pageTransitions[36] = {
+        this.pageTransitions[37] = this.pageTransitions[38] = {
             inOrigin: [0.5,0.5],
             inTransform: Transform.scale(.8, .8),
             inOpacity: 0,
@@ -856,13 +862,11 @@ define(function(require, exports, module) {
             overlap: true
         };
 
-        this.pageTransitions[37] = {
+        this.pageTransitions[39] = this.pageTransitions[40] = {
             inOrigin: [0.5,0.5],
             inTransform: [
                 Transform.thenMove(Transform.rotateZ(-180*deg), [0,0,-3000]),
-                Transform.thenMove(Transform.rotateZ(-180*deg), [0,0,-3000]),
-//                Transform.thenMove(Transform.rotateZ(-180*deg), [0,0,-2000]),
-//                Transform.thenMove(Transform.rotateZ(-120*deg), [0,0,-1000])
+                Transform.thenMove(Transform.rotateZ(-180*deg), [0,0,-3000])
             ],
             inOpacity: 1,
             inTransition: [
@@ -891,7 +895,7 @@ define(function(require, exports, module) {
             overlap: true
         };
 
-        this.pageTransitions[38] = {
+        this.pageTransitions[41] = {
             inOrigin: [0,0.5],
             inTransform: [
                 Transform.translate(this.options.size[0],0,0)
@@ -913,7 +917,7 @@ define(function(require, exports, module) {
             showOpacity: 1,
             overlap: true
         };
-        this.pageTransitions[39] = {
+        this.pageTransitions[42] = {
             inOrigin: [1,0.5],
             inTransform: [
                 Transform.translate(-this.options.size[0],0,0)
@@ -935,7 +939,8 @@ define(function(require, exports, module) {
             showOpacity: 1,
             overlap: true
         };
-        this.pageTransitions[40] = {
+
+        this.pageTransitions[43] = {
             inOrigin: [0.5,0],
             inTransform: [
                 Transform.translate(0,this.options.size[1],0)
@@ -957,7 +962,7 @@ define(function(require, exports, module) {
             showOpacity: 1,
             overlap: true
         };
-        this.pageTransitions[41] = {
+        this.pageTransitions[44] = {
             inOrigin: [0.5,1],
             inTransform: [
                 Transform.translate(0,-this.options.size[1],0)
@@ -980,7 +985,7 @@ define(function(require, exports, module) {
             overlap: true
         };
 
-        this.pageTransitions[42] = {
+        this.pageTransitions[45] = {
             inOrigin: [1,0.5],
             inTransform: [
                 Transform.rotateY(-90*deg),
@@ -1006,7 +1011,7 @@ define(function(require, exports, module) {
             showOpacity: 1,
             overlap: true
         };
-        this.pageTransitions[43] = {
+        this.pageTransitions[46] = {
             inOrigin: [0,0.5],
             inTransform: [
                 Transform.rotateY(90*deg),
@@ -1032,7 +1037,8 @@ define(function(require, exports, module) {
             showOpacity: 1,
             overlap: true
         };
-        this.pageTransitions[44] = {
+
+        this.pageTransitions[47] = {
             inOrigin: [0.5,1],
             inTransform: [
                 Transform.rotateX(90*deg),
@@ -1058,7 +1064,7 @@ define(function(require, exports, module) {
             showOpacity: 1,
             overlap: true
         };
-        this.pageTransitions[45] = {
+        this.pageTransitions[48] = {
             inOrigin: [0.5,0],
             inTransform: [
                 Transform.rotateX(-90*deg),
@@ -1085,7 +1091,7 @@ define(function(require, exports, module) {
             overlap: true
         };
 
-        this.pageTransitions[46] = {
+        this.pageTransitions[49] = {
             inOrigin: [0.5,0.5],
             inTransform: Transform.translate(this.options.size[0],0,1),
             inOpacity: 0.3,
@@ -1112,7 +1118,7 @@ define(function(require, exports, module) {
             showOpacity: 1,
             overlap: true
         };
-        this.pageTransitions[47] = {
+        this.pageTransitions[50] = {
             inOrigin: [0.5,0.5],
             inTransform: Transform.translate(-this.options.size[0],0,1),
             inOpacity: 0.3,
@@ -1140,7 +1146,8 @@ define(function(require, exports, module) {
             showOpacity: 1,
             overlap: true
         };
-        this.pageTransitions[48] = {
+
+        this.pageTransitions[51] = {
             inOrigin: [0.5,0.5],
             inTransform: Transform.translate(0,this.options.size[1],1),
             inOpacity:0.3,
@@ -1168,7 +1175,7 @@ define(function(require, exports, module) {
             showOpacity: 1,
             overlap: true
         };
-        this.pageTransitions[49] = {
+        this.pageTransitions[52] = {
             inOrigin: [0.5,0.5],
             inTransform: Transform.translate(0,-this.options.size[1],1),
             inOpacity: 0.3,
@@ -1197,7 +1204,7 @@ define(function(require, exports, module) {
             overlap: true
         };
 
-        this.pageTransitions[50] = {
+        this.pageTransitions[53] = {
             inOrigin: [1,0.5],
             inTransform: Transform.thenMove(Transform.rotateY(-90*deg), [-this.options.size[0],0,0]),
             inOpacity: 0,
@@ -1213,7 +1220,7 @@ define(function(require, exports, module) {
             showOpacity: 1,
             overlap: true
         };
-        this.pageTransitions[51] = {
+        this.pageTransitions[54] = {
             inOrigin: [0,0.5],
             inTransform: Transform.thenMove(Transform.rotateY(90*deg), [this.options.size[0],0,0]),
             inOpacity: 0,
@@ -1229,7 +1236,8 @@ define(function(require, exports, module) {
             showOpacity: 1,
             overlap: true
         };
-        this.pageTransitions[52] = {
+
+        this.pageTransitions[55] = {
             inOrigin: [0.5,1],
             inTransform: Transform.thenMove(Transform.rotateX(90*deg), [0,-this.options.size[1],0]),
             inOpacity: 0,
@@ -1245,7 +1253,7 @@ define(function(require, exports, module) {
             showOpacity: 1,
             overlap: true
         };
-        this.pageTransitions[53] = {
+        this.pageTransitions[56] = {
             inOrigin: [0.5,0],
             inTransform: Transform.thenMove(Transform.rotateX(-90*deg), [0,this.options.size[1],0]),
             inOpacity:0,
@@ -1262,7 +1270,7 @@ define(function(require, exports, module) {
             overlap: true
         };
 
-        this.pageTransitions[54] = {
+        this.pageTransitions[57] = {
             inOrigin: [0,0.5],
             inTransform: Transform.thenMove(Transform.rotateY(-90*deg), [this.options.size[0],0,0]),
             inOpacity: 0.3,
@@ -1284,7 +1292,7 @@ define(function(require, exports, module) {
             showOpacity: 1,
             overlap: true
         };
-        this.pageTransitions[55] = {
+        this.pageTransitions[58] = {
             inOrigin: [1,0.5],
             inTransform: Transform.thenMove(Transform.rotateY(90*deg), [-this.options.size[0],0,0]),
             inOpacity: 0.3,
@@ -1306,7 +1314,8 @@ define(function(require, exports, module) {
             showOpacity: 1,
             overlap: true
         };
-        this.pageTransitions[56] = {
+
+        this.pageTransitions[59] = {
             inOrigin: [0.5,0],
             inTransform: Transform.thenMove(Transform.rotateX(90*deg), [0,this.options.size[1],0]),
             inOpacity: 0.3,
@@ -1328,7 +1337,7 @@ define(function(require, exports, module) {
             showOpacity: 1,
             overlap: true
         };
-        this.pageTransitions[57] = {
+        this.pageTransitions[60] = {
             inOrigin: [0.5,1],
             inTransform: Transform.thenMove(Transform.rotateX(-90*deg), [0,-this.options.size[1],0]),
             inOpacity: 0.3,
@@ -1351,7 +1360,7 @@ define(function(require, exports, module) {
             overlap: true
         };
 
-        this.pageTransitions[58] = {
+        this.pageTransitions[61] = {
             inOrigin: [0,0.5],
             inTransform: [
                 Transform.thenMove(Transform.rotateY(90*deg), [this.options.size[0],0,0]),
@@ -1391,7 +1400,7 @@ define(function(require, exports, module) {
             showOpacity: 1,
             overlap: true
         };
-        this.pageTransitions[59] = {
+        this.pageTransitions[62] = {
             inOrigin: [1,0.5],
             inTransform: [
                 Transform.thenMove(Transform.rotateY(-90*deg), [-this.options.size[0],0,0]),
@@ -1431,7 +1440,8 @@ define(function(require, exports, module) {
             showOpacity: 1,
             overlap: true
         };
-        this.pageTransitions[60] = {
+
+        this.pageTransitions[63] = {
             inOrigin: [0.5,0],
             inTransform: [
                 Transform.thenMove(Transform.rotateX(-90*deg), [0,this.options.size[1],0]),
@@ -1471,7 +1481,7 @@ define(function(require, exports, module) {
             showOpacity: 1,
             overlap: true
         };
-        this.pageTransitions[61] = {
+        this.pageTransitions[64] = {
             inOrigin: [0.5,1],
             inTransform: [
                 Transform.thenMove(Transform.rotateX(90*deg), [0,-this.options.size[1],0]),
@@ -1512,7 +1522,7 @@ define(function(require, exports, module) {
             overlap: true
         };
 
-        this.pageTransitions[62] = {
+        this.pageTransitions[65] = {
             inOrigin: [0,0.5],
             inTransform: [
                 Transform.thenMove(Transform.thenScale(Transform.rotateY(65*deg), [.4,.4,.4]), [this.options.size[0]*2,0,0]),
@@ -1546,8 +1556,7 @@ define(function(require, exports, module) {
             showOpacity: 1,
             overlap: true
         };
-
-        this.pageTransitions[63] = {
+        this.pageTransitions[66] = {
             inOrigin: [1,0.5],
             inTransform: [
                 Transform.thenMove(Transform.thenScale(Transform.rotateY(-65*deg), [.4,.4,.4]), [-this.options.size[0]*2,0,0]),
@@ -1582,7 +1591,7 @@ define(function(require, exports, module) {
             overlap: true
         };
 
-        this.pageTransitions[64] = {
+        this.pageTransitions[67] = {
             inOrigin: [0.5,0],
             inTransform: [
                 Transform.thenMove(Transform.thenScale(Transform.rotateX(-65*deg), [.4,.4,.4]), [0,this.options.size[1]*2,0]),
@@ -1616,8 +1625,7 @@ define(function(require, exports, module) {
             showOpacity: 1,
             overlap: true
         };
-
-        this.pageTransitions[65] = {
+        this.pageTransitions[68] = {
             inOrigin: [0.5,1],
             inTransform: [
                 Transform.thenMove(Transform.thenScale(Transform.rotateX(65*deg), [.4,.4,.4]), [0,-this.options.size[1]*2,0]),
@@ -1652,7 +1660,7 @@ define(function(require, exports, module) {
             overlap: true
         };
 
-        this.pageTransitions[66] = {
+        this.pageTransitions[69] = {
             inOrigin: [1.5,.5],
             inTransform: [
                 Transform.thenMove(Transform.rotateY(-90*deg), [0,0,-500]),
@@ -1686,8 +1694,7 @@ define(function(require, exports, module) {
             showOpacity: 1,
             overlap: true
         };
-
-        this.pageTransitions[67] = {
+        this.pageTransitions[70] = {
             inOrigin: [-0.5,0.5],
             inTransform: [
                 Transform.thenMove(Transform.rotateY(90*deg), [0,0,-500]),
@@ -1722,7 +1729,7 @@ define(function(require, exports, module) {
             overlap: true
         };
 
-        this.pageTransitions[68] = {
+        this.pageTransitions[71] = {
             inOrigin: [0.5,0.5],
             inTransform: [
                 Transform.translate(this.options.size[0]*2,0,-500),
@@ -1768,7 +1775,7 @@ define(function(require, exports, module) {
             showOpacity: 1,
             overlap: true
         };
-        this.pageTransitions[69] = {
+        this.pageTransitions[72] = {
             inOrigin: [0.5,0.5],
             inTransform: [
                 Transform.translate(-this.options.size[0]*2,0,-500),

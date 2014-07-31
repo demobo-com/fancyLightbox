@@ -15,20 +15,50 @@ define(function(require, exports, module) {
         array: surfaces,
         loop: true
     });
-
     var size = [window.innerWidth/4, window.innerHeight/4];
-
     var centerModifier = new StateModifier({
         size: size,
         origin: [0.5, 0.5],
         align: [0.5, 0.5]
     });
-
     var lightbox = new Lightbox({
         size: size
     });
-
     mainContext.add(centerModifier).add(lightbox);
+    var prevButton = new Surface({
+        content: "Prev",
+        properties: {
+            color: 'white',
+            backgroundColor: '#fa5c4f',
+            textAlign: 'center',
+            cursor: 'pointer',
+            lineHeight: '50px'
+        }
+    });
+    var nextButtonModifier = new StateModifier({
+        size: [100,50],
+        origin: [0.5, 0.5],
+        align: [0.2, 0.5]
+    });
+    var nextButton = new Surface({
+        content: "Next",
+        properties: {
+            color: 'white',
+            backgroundColor: '#fa5c4f',
+            textAlign: 'center',
+            cursor: 'pointer',
+            lineHeight: '50px'
+        }
+    });
+    var prevButtonModifier = new StateModifier({
+        size: [100,50],
+        origin: [0.5, 0.5],
+        align: [0.8, 0.5]
+    });
+    mainContext.add(nextButtonModifier).add(prevButton);
+    mainContext.add(prevButtonModifier).add(nextButton);
+    prevButton.on('click', prev);
+    nextButton.on('click', next);
 
     for (var i = 0; i < 5; i++) {
         var surface = new Surface({
@@ -43,7 +73,6 @@ define(function(require, exports, module) {
             }
         });
         surfaces.push(surface);
-        surface.on('click', next);
     }
 
     window.lightbox = lightbox;
@@ -52,7 +81,8 @@ define(function(require, exports, module) {
     lightbox.show(viewSequence);
 
     function next() {
-        lightbox.setPageTransition(document.getElementById('transitionsSelect').value);
+        var transitionId = 2*document.getElementById('transitionsSelect').value;
+        lightbox.setPageTransition(transitionId);
         if (viewSequence.getNext()) {
             viewSequence = viewSequence.getNext();
             lightbox.show(viewSequence);
@@ -60,7 +90,8 @@ define(function(require, exports, module) {
     }
 
     function prev() {
-        lightbox.setPageTransition(document.getElementById('transitionsSelect').value);
+        var transitionId = 2*document.getElementById('transitionsSelect').value-1;
+        lightbox.setPageTransition(transitionId);
         if (viewSequence.getPrevious()) {
             viewSequence = viewSequence.getPrevious();
             lightbox.show(viewSequence);
