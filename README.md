@@ -1,6 +1,7 @@
 fancyLightbox
 =============
-[https://github.com/demobo-com/fancyLightbox]
+https://github.com/demobo-com/fancyLightbox
+
 This is a handy widget that we build for our presentation app de Mobo Slides.
 
 FancyLightbox supports multi-state in-out transitions and consists a collection of 72 prebuilt show/hide transitions.
