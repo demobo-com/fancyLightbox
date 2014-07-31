@@ -8,7 +8,7 @@ define(function(require, exports, module) {
     var Lightbox = require('FancyLightbox');
 
     var mainContext = Engine.createContext();
-    mainContext.setPerspective(500);
+    mainContext.setPerspective(600);
 
     var surfaces = [];
     var viewSequence = new ViewSequence({
