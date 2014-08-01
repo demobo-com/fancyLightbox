@@ -15,11 +15,11 @@ define(function(require, exports, module) {
         array: surfaces,
         loop: true
     });
-    var size = [window.innerWidth/4, window.innerHeight/4];
+    var size = [window.innerWidth, window.innerHeight *.93];
     var centerModifier = new StateModifier({
         size: size,
-        origin: [0.5, 0.5],
-        align: [0.5, 0.5]
+        origin: [0.5, 1],
+        align: [0.5, 1]
     });
     var lightbox = new Lightbox({
         size: size
@@ -32,13 +32,13 @@ define(function(require, exports, module) {
             backgroundColor: '#fa5c4f',
             textAlign: 'center',
             cursor: 'pointer',
-            lineHeight: '50px'
+            lineHeight: '40px'
         }
     });
     var nextButtonModifier = new StateModifier({
-        size: [100,50],
-        origin: [0.5, 0.5],
-        align: [0.2, 0.5]
+        size: [60,40],
+        origin: [0.7, 0],
+        align: [0.7, 0]
     });
     var nextButton = new Surface({
         content: "Next",
@@ -47,20 +47,20 @@ define(function(require, exports, module) {
             backgroundColor: '#fa5c4f',
             textAlign: 'center',
             cursor: 'pointer',
-            lineHeight: '50px'
+            lineHeight: '40px'
         }
     });
     var prevButtonModifier = new StateModifier({
-        size: [100,50],
-        origin: [0.5, 0.5],
-        align: [0.8, 0.5]
+        size: [60,40],
+        origin: [1, 0],
+        align: [1, 0]
     });
     mainContext.add(nextButtonModifier).add(prevButton);
     mainContext.add(prevButtonModifier).add(nextButton);
     prevButton.on('click', prev);
     nextButton.on('click', next);
 
-    for (var i = 0; i < 5; i++) {
+    for (var i = 0; i < 10; i++) {
         var surface = new Surface({
             size: size,
             content: 'Surface ' + i,
@@ -73,6 +73,7 @@ define(function(require, exports, module) {
             }
         });
         surfaces.push(surface);
+        surface.on('click', next);
     }
 
     window.lightbox = lightbox;

@@ -865,13 +865,15 @@ define(function(require, exports, module) {
         this.pageTransitions[39] = this.pageTransitions[40] = {
             inOrigin: [0.5,0.5],
             inTransform: [
-                Transform.thenMove(Transform.rotateZ(-180*deg), [0,0,-3000]),
-                Transform.thenMove(Transform.rotateZ(-180*deg), [0,0,-3000])
+//                Transform.thenMove(Transform.rotateZ(0*deg), [0,0,-3000]),
+//                Transform.thenMove(Transform.rotateZ(0*deg), [0,0,-3000])
+                Transform.rotateZ(0),
+                Transform.rotateZ(0)
             ],
             inOpacity: 1,
             inTransition: [
                 {duration: 500, curve: "easeIn"},
-                {duration: 250, curve: "easeOut"},
+                {duration: 1000, curve: "easeOut"},
 //                {duration: 1700, curve: "easeOut"},
 //                {duration: 1700, curve: "easeOut"}
             ],
@@ -879,18 +881,20 @@ define(function(require, exports, module) {
             outOrigin: [0.5,0.5],
             outOpacity: 1,
             outTransform: [
-                Transform.thenMove(Transform.rotateZ(-180*deg), [0,0,-1000]),
+//                Transform.thenMove(Transform.rotateZ(0*deg), [0,0,-3000]),
+                Transform.rotateZ(0)
 //                Transform.thenMove(Transform.rotateZ(-178*deg), [0,0,-2000]),
 //                Transform.thenMove(Transform.rotateZ(-360*deg), [0,0,-3000])
             ],
             outTransition: [
                 {duration: 250, curve: "easeIn"},
-                {duration: 250, curve: "easeIn"},
+//                {duration: 250, curve: "easeIn"},
 //                {duration: 1700, curve: "easeIn"}
             ],
 
             showOrigin: [0.5,0.5],
-            showTransform: Transform.thenMove(Transform.rotateZ(0*deg), [0,0,1]),
+//            showTransform: Transform.thenMove(Transform.rotateZ(Math.PI * (2-1/180)), [0,0,0]),
+            showTransform: Transform.rotateZ(Math.PI * (2-1/180)),
             showOpacity: 1,
             overlap: true
         };
