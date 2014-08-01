@@ -81,8 +81,6 @@ define(function(require, exports, module) {
         var cbCount = showTransform.length + showOrigin.length + showOpacity.length;
         var _cb = callback ? Utility.after(cbCount, callback) : undefined;
 
-//        console.log(showTransform, transition)
-
         showTransform.map(function(transform,index){
             stateItem.transform.set(transform, transition[index], _cb);
         }.bind(this));
@@ -128,7 +126,6 @@ define(function(require, exports, module) {
             if (callback) callback.call(this);
         }.bind(this));
 
-        console.log(outTransform,transition )
         outTransform.map(function(transform,index){
             stateItem.transform.set(transform, transition[index], _cb);
         }.bind(this));

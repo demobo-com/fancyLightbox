@@ -16,10 +16,15 @@ define(function(require, exports, module) {
         loop: true
     });
     var size = [window.innerWidth, window.innerHeight *.93];
+    var origin = [0.5, 1];
+    if (!navigator.userAgent.match("Mobile")) {
+        size = [window.innerWidth/4, window.innerHeight/4];
+        origin = [.5,.5];
+    }
+
     var centerModifier = new StateModifier({
         size: size,
-        origin: [0.5, 1],
-        align: [0.5, 1]
+        origin: origin
     });
     var lightbox = new Lightbox({
         size: size
