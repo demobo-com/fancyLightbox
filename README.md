@@ -1,4 +1,4 @@
-fancyLightbox
+Fancy Lightbox
 =============
 https://github.com/demobo-com/fancyLightbox
 
