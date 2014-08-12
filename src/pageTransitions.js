@@ -42,8 +42,7 @@ define(function(require, exports, module) {
     });
     var nextButtonModifier = new StateModifier({
         size: [60,40],
-        origin: [0.7, 0],
-        align: [0.7, 0]
+        origin: [0.7, 0.01]
     });
     var nextButton = new Surface({
         content: "Next",
@@ -57,8 +56,7 @@ define(function(require, exports, module) {
     });
     var prevButtonModifier = new StateModifier({
         size: [60,40],
-        origin: [1, 0],
-        align: [1, 0]
+        origin: [0.99, 0.01]
     });
     mainContext.add(nextButtonModifier).add(prevButton);
     mainContext.add(prevButtonModifier).add(nextButton);
