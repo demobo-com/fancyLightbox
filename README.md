@@ -1,6 +1,8 @@
 fancyLightbox
 =============
-https://github.com/demobo-com/fancyLightbox
+source code: https://github.com/demobo-com/fancyLightbox
+
+demo: http://demobo-com.github.io/fancyLightbox/
 
 This is a handy widget that we build for our presentation app de Mobo Slides.
 
